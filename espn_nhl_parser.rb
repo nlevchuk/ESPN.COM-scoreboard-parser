@@ -5,19 +5,19 @@ require 'open-uri'
 games = []
 url = "http://espn.go.com/nhl/scoreboard"
 doc = Nokogiri::HTML(open(url))
-doc.css("div.game-header").each do |gametable|
+doc.css("div.game-header").each do |gametable|          # gametable - html table of current game
    loser = gametable.at_css("tr.loser a").text
    winner = gametable.at_css("tr.winner a").text
    winner_place = gametable.at_css("tr.winner")[:id].scan(/home|away/)
    score = []
-   gametable.css("td.team-score").each do |team_score|
+   gametable.css("td.team-score").each do |team_score|  # Need to find two scores per game (for away and home teams)
      score << team_score.text
    end  
-   score_of_game = score[1] + ':' + score[0]
+   result = "#{score[1]}:#{score[0]}"                   # Away team - Home team
    if winner_place.to_s == "home"
-     game = "#{winner}-#{loser} #{score_of_game}"
+     game = "#{winner}-#{loser} #{result}"
    else
-     game = "#{loser}-#{winner} #{score_of_game}"
+     game = "#{loser}-#{winner} #{result}"
    end
    games << game
 end
