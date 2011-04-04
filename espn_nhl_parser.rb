@@ -7,8 +7,7 @@ url = "http://espn.go.com/nhl/scoreboard"
 doc = Nokogiri::HTML(open(url))
 
 doc.css("div.game-header").each do |gametable|          # gametable - html table of current game
-   unless gametable.at_css("tr.loser a").nil?           # if game not started
-     game_info = gametable.at_css("ul.game-info li").text.scan(/OT|SO/).to_s
+   unless gametable.at_css("tr.loser a").nil?           # if game not started then skip 
      loser = gametable.at_css("tr.loser a").text
      winner = gametable.at_css("tr.winner a").text
      winner_place = gametable.at_css("tr.winner")[:id].scan(/home|away/)
@@ -17,6 +16,7 @@ doc.css("div.game-header").each do |gametable|          # gametable - html table
        score << team_score.text
      end  
      result = "#{score[1]}:#{score[0]}"                   # Away team - Home team
+     game_info = gametable.at_css("ul.game-info li").text.scan(/OT|SO/).to_s
      if winner_place.to_s == "home"
        game = "#{winner}-#{loser} #{result} #{game_info}"
      else
