@@ -15,9 +15,9 @@ doc.css("div.game-header").each do |gametable|
    end  
    score_of_game = score[1] + ':' + score[0]
    if winner_place.to_s == "home"
-     game = winner + '-' + loser + '  '+ score_of_game
+     game = "#{winner}-#{loser} #{score_of_game}"
    else
-     game = loser + '-' + winner + '  '+ score_of_game
+     game = "#{loser}-#{winner} #{score_of_game}"
    end
    games << game
 end
