@@ -18,7 +18,7 @@ doc.css("div.game-header").each do |gametable|          # gametable - html table
        score << team_score.text
      end
      result = "#{score[1]}:#{score[0]}"                   # Away team - Home team
-     game_info = gametable.at_css("ul.game-info li").text 
+     game_info = gametable.at_css("ul.game-info li").text.scan(/Final|OT|SO/) 
      game = "#{home}-#{away} #{result} #{game_info}"
      games << game
    end # unless
