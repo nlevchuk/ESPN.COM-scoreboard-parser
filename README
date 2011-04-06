@@ -1,0 +1,17 @@
+ESPN.COM scoreboard parser from 
+url = "http://espn.go.com/nhl/scoreboard"
+requires nokogiri, rubygems and timeout gems
+Author: Sharipov Ruslan
+
+
+fetching results on 2011/04/04:
+
+Sabres-Lightning 4:2 Final
+Canadiens-Blackhawks 2:1 FinalOT
+Penguins-Devils 4:2 Final
+Predators-Thrashers 6:3 Final
+Oilers-Canucks 2:0 Final
+Maple Leafs-Capitals 2:3 FinalSO
+Senators-Flyers 5:2 Final
+Blues-Avalanche 3:1 Final
+Stars-Blue Jackets 3:0 Final
